@@ -11,4 +11,14 @@ public class DivisionService {
     @Autowired
     private DivisionRepository divisionRepository;
     
+    public Division editarDivision(Long id, Division divisionDetalles) {
+        Division divisionExistente = divisionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("División no encontrada"));
+
+        divisionExistente.setNombre(divisionDetalles.getNombre());
+        divisionExistente.setActivo(divisionDetalles.isActivo());
+
+        return divisionRepository.save(divisionExistente);
+    }
+    
 }
