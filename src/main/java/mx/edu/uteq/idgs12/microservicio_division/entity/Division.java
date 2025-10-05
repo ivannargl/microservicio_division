@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,8 +17,8 @@ public class Division {
     private long id;
     private String nombre;
     private boolean activo;
-    @OneToMany (cascade =CascadeType.All, orphanRemoval= true)
+    @OneToMany (cascade =CascadeType.ALL, orphanRemoval= true)
     @JoinColumn( name = "division_id")
-    private List<ProgramaEducativo> programasEducativos
+    private List<ProgramaEducativo> programasEducativos;
 
 }
