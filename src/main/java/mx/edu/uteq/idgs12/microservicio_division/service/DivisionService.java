@@ -11,4 +11,9 @@ public class DivisionService {
     @Autowired
     private DivisionRepository divisionRepository;
     
+    public Division agregarDivision(Division division) {
+        division.setActivo(true);
+        return divisionRepository.save(division);
+    }
+    
 }

@@ -13,4 +13,9 @@ public class DivisionController {
     @Autowired
     private DivisionService divisionService;
     
+    @PostMapping
+    public Division agregarDivision(@RequestBody Division division) {
+        return divisionService.agregarDivision(division);
+    }
+    
 }
