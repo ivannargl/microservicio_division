@@ -1,6 +1,8 @@
 package mx.edu.uteq.idgs12.microservicio_division.controller;
 
 import mx.edu.uteq.idgs12.microservicio_division.dto.DivisionDTO;
+import mx.edu.uteq.idgs12.microservicio_division.entity.Division;
+
 import org.springframework.http.ResponseEntity;
 import mx.edu.uteq.idgs12.microservicio_division.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +15,9 @@ public class DivisionController {
     @Autowired
     private DivisionService divisionService;
 
-    @PostMapping
-    public DivisionDTO agregarDivision(@RequestBody DivisionDTO divisionDTO) {
-        return divisionService.agregarDivision(divisionDTO);
-    }
-    
     @PutMapping("/{id}")
-    public ResponseEntity<DivisionDTO> editarDivision(@PathVariable Long id, @RequestBody DivisionDTO divisionDTO) {
-        DivisionDTO actualizada = divisionService.editarDivision(id, divisionDTO);
+    public ResponseEntity<Division> editarDivision(@PathVariable Long id, @RequestBody DivisionDTO dto) {
+        Division actualizada = divisionService.editarDivision(id, dto);
         return ResponseEntity.ok(actualizada);
     }
     
