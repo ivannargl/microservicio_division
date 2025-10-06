@@ -17,4 +17,10 @@ public class DivisionController {
         return divisionService.agregarDivision(divisionDTO);
     }
     
+    @PutMapping("/{id}")
+    public ResponseEntity<DivisionDTO> editarDivision(@PathVariable Long id, @RequestBody DivisionDTO divisionDTO) {
+        DivisionDTO actualizada = divisionService.editarDivision(id, divisionDTO);
+        return ResponseEntity.ok(actualizada);
+    }
+    
 }

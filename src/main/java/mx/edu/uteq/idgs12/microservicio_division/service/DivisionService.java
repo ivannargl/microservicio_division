@@ -12,20 +12,21 @@ public class DivisionService {
     @Autowired
     private DivisionRepository divisionRepository;
     
-    public DivisionDTO agregarDivision(DivisionDTO divisionDTO) {
-        Division division = new Division();
-        division.setNombre(divisionDTO.getNombre());
-        division.setActivo(true);
+    public DivisionDTO editarDivision(Long id, DivisionDTO divisionDTO) {
+        Division divisionExistente = divisionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("División no encontrada"));
 
-        Division guardada = divisionRepository.save(division);
+        divisionExistente.setNombre(divisionDTO.getNombre());
+        divisionExistente.setActivo(divisionDTO.isActivo());
 
-        // Convertir la entidad guardada en DTO de respuesta
-        DivisionDTO resultado = new DivisionDTO();
-        resultado.setId(guardada.getId());
-        resultado.setNombre(guardada.getNombre());
-        resultado.setActivo(guardada.isActivo());
+        Division actualizada = divisionRepository.save(divisionExistente);
 
-        return resultado;
+        DivisionDTO respuesta = new DivisionDTO();
+        respuesta.setId(actualizada.getId());
+        respuesta.setNombre(actualizada.getNombre());
+        respuesta.setActivo(actualizada.isActivo());
+
+        return respuesta;
     }
     
 }
