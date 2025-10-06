@@ -1,6 +1,7 @@
 package mx.edu.uteq.idgs12.microservicio_division.controller;
 
 import mx.edu.uteq.idgs12.microservicio_division.dto.DivisionDTO;
+import org.springframework.http.ResponseEntity;
 import mx.edu.uteq.idgs12.microservicio_division.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
