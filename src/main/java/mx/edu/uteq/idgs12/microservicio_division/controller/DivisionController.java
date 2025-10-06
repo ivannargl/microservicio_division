@@ -15,9 +15,9 @@ public class DivisionController {
     @Autowired
     private DivisionService divisionService;
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Division> editarDivision(@PathVariable Long id, @RequestBody DivisionDTO dto) {
-        Division actualizada = divisionService.editarDivision(id, dto);
+    @PutMapping("/{id}/estado")
+    public ResponseEntity<Division> cambiarEstado(@PathVariable Long id, @RequestParam boolean activo) {
+        Division actualizada = divisionService.cambiarEstado(id, activo);
         return ResponseEntity.ok(actualizada);
     }
     
