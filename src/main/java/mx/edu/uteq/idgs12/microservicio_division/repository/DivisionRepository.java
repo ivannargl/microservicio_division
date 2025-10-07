@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface DivisionRepository extends JpaRepository<Division, Long> {
 List<Division> findByHabilitadoTrue();
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DivisionRepository extends JpaRepository<Division, Long> {
 }
