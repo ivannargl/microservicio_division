@@ -1,5 +1,6 @@
 package mx.edu.uteq.idgs12.microservicio_division.entity;
 
+import jakarta.persistence.*;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
@@ -15,6 +16,11 @@ public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private String nombre;
+    private boolean activo;
+    private boolean habilitado = true;
+    
     private String nombre;
     private boolean activo;
     @OneToMany (cascade =CascadeType.ALL, orphanRemoval= true)
